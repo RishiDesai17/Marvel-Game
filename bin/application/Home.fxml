@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
@@ -21,6 +22,17 @@
       <ImageView fx:id="spiderWeb" fitHeight="0.31" fitWidth="0.26" layoutX="458.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/spider%20web.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ironMan" fitHeight="320.0" fitWidth="216.0" layoutX="611.0" layoutY="-320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/iron-man.png" />
+         </image>
+      </ImageView>
+      <Circle fx:id="ironManLight" fill="WHITE" layoutX="748.0" layoutY="179.0" opacity="0.75" radius="0.1" stroke="WHITE" strokeType="INSIDE" />
+      <ImageView fx:id="blackWidow" fitHeight="236.0" fitWidth="323.0" layoutX="-323.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/black-widow.png" />
          </image>
       </ImageView>
    </children>

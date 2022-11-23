@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class HomeController extends SceneController implements Initializable {
@@ -22,6 +23,15 @@ public class HomeController extends SceneController implements Initializable {
 	private ImageView spiderWeb;
 	
 	@FXML
+	private ImageView ironMan;
+	
+	@FXML
+	private Circle ironManLight;
+	
+	@FXML
+	private ImageView blackWidow;
+	
+	@FXML
 	private Button startGameButton;
 
 	@Override
@@ -29,13 +39,17 @@ public class HomeController extends SceneController implements Initializable {
 		TranslateTransition spiderManEntry = this.spiderManEntry();
 		ScaleTransition spiderWebExpand = this.spiderWebExpand();
 		FadeTransition spiderWebFadeOut = this.fadeOutSpiderWeb();
+		TranslateTransition ironManEntry = this.ironManEntry();
+		ScaleTransition ironManLightExpand = this.ironManLightExpand();
+		FadeTransition ironManLightFadeOut = this.fadeOutIronManLight();
+		TranslateTransition blackWidowEntry = this.blackWidowEntry();
 		FadeTransition startGameButtonFadeIn = this.fadeInButton();
 		
-		SequentialTransition seqT = new SequentialTransition(spiderManEntry, spiderWebExpand, spiderWebFadeOut, startGameButtonFadeIn);
+		SequentialTransition seqT = new SequentialTransition(spiderManEntry, spiderWebExpand, spiderWebFadeOut, ironManEntry, ironManLightExpand, ironManLightFadeOut, blackWidowEntry, startGameButtonFadeIn);
 		seqT.play();
 	}
 	
-	public TranslateTransition spiderManEntry() {
+	private TranslateTransition spiderManEntry() {
 		TranslateTransition translate = new TranslateTransition();
 		translate.setNode(spiderman);
 		translate.setDuration(Duration.millis(2000));
@@ -44,7 +58,23 @@ public class HomeController extends SceneController implements Initializable {
 		
 	}
 	
-	public ScaleTransition spiderWebExpand() {
+	private TranslateTransition ironManEntry() {
+		TranslateTransition translate = new TranslateTransition();
+		translate.setNode(ironMan);
+		translate.setDuration(Duration.millis(1700));
+		translate.setByY(450);
+		return translate;
+	}
+	
+	private TranslateTransition blackWidowEntry() {
+		TranslateTransition translate = new TranslateTransition();
+		translate.setNode(blackWidow);
+		translate.setDuration(Duration.millis(1200));
+		translate.setByX(334);
+		return translate;
+	}
+	
+	private ScaleTransition spiderWebExpand() {
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(spiderWeb);
 		scale.setDuration(Duration.millis(1500));
@@ -53,16 +83,34 @@ public class HomeController extends SceneController implements Initializable {
 		return scale;
 	}
 	
-	public FadeTransition fadeOutSpiderWeb() {
+	private ScaleTransition ironManLightExpand() {
+		ScaleTransition scale = new ScaleTransition();
+		scale.setNode(ironManLight);
+		scale.setDuration(Duration.millis(1200));
+		scale.setByX(9000);
+		scale.setByY(9000);
+		return scale;
+	}
+	
+	private FadeTransition fadeOutSpiderWeb() {
 		FadeTransition fade = new FadeTransition();
 		fade.setNode(spiderWeb);
-		fade.setDuration(Duration.millis(800));
+		fade.setDuration(Duration.millis(700));
 		fade.setFromValue(1);
 		fade.setToValue(0);
 		return fade;
 	}
 	
-	public FadeTransition fadeInButton() {
+	private FadeTransition fadeOutIronManLight() {
+		FadeTransition fade = new FadeTransition();
+		fade.setNode(ironManLight);
+		fade.setDuration(Duration.millis(800));
+		fade.setFromValue(0.75);
+		fade.setToValue(0);
+		return fade;
+	}
+	
+	private FadeTransition fadeInButton() {
 		FadeTransition fade = new FadeTransition();
 		fade.setNode(startGameButton);
 		fade.setDuration(Duration.millis(1500));
