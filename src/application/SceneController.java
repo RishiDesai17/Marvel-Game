@@ -28,4 +28,13 @@ public class SceneController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public void switchToEndGameScreen(ActionEvent event) throws IOException {
+		System.out.println("getClass().getResource(\"End.fxml\") = " + getClass().getResource("End.fxml"));
+		root = FXMLLoader.load(getClass().getResource("End.fxml"));
+		stage = (Stage)((Node)(event.getSource())).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
 }

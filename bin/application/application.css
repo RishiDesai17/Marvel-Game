@@ -2,3 +2,8 @@
 	-fx-background-image: url("images/surface.jpg");
     -fx-background-size: 900 650;
 }
+
+#gamePane{
+	-fx-background-image: url("images/arena.jpg");
+    -fx-background-size: 900 650;
+}
