@@ -1,6 +1,7 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -13,9 +14,10 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 			Scene scene = new Scene(root);
-			
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
+//			Scene gameScene = new Scene(gameRoot);
+//			homeScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//			gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();

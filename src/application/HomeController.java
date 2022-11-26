@@ -36,6 +36,10 @@ public class HomeController extends SceneController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		spiderWeb.setDisable(true); // prevent web from obscuring start btn
+		ironManLight.setDisable(true); // prevent light circle from obscuring start btn
+		
 		TranslateTransition spiderManEntry = this.spiderManEntry();
 		ScaleTransition spiderWebExpand = this.spiderWebExpand();
 		FadeTransition spiderWebFadeOut = this.fadeOutSpiderWeb();
