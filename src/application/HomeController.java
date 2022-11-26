@@ -39,7 +39,7 @@ public class HomeController extends SceneController implements Initializable {
 		
 		spiderWeb.setDisable(true); // prevent web from obscuring start btn
 		ironManLight.setDisable(true); // prevent light circle from obscuring start btn
-		
+		startGameButton.setDisable(true);
 		TranslateTransition spiderManEntry = this.spiderManEntry();
 		ScaleTransition spiderWebExpand = this.spiderWebExpand();
 		FadeTransition spiderWebFadeOut = this.fadeOutSpiderWeb();
@@ -51,6 +51,7 @@ public class HomeController extends SceneController implements Initializable {
 		
 		SequentialTransition seqT = new SequentialTransition(spiderManEntry, spiderWebExpand, spiderWebFadeOut, ironManEntry, ironManLightExpand, ironManLightFadeOut, blackWidowEntry, startGameButtonFadeIn);
 		seqT.play();
+		seqT.setOnFinished(e -> startGameButton.setDisable(false));
 	}
 	
 	private TranslateTransition spiderManEntry() {

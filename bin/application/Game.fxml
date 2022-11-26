@@ -130,7 +130,7 @@
                     </rowConstraints>
                      <children>
                         <Button fx:id="swapBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="174.0" text="Swap" />
-                        <Button fx:id="cancelSwapBtn" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" text="Cancel Swap" GridPane.columnIndex="1" />
+                        <Button fx:id="cancelSwapBtn" disable="true" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" text="Cancel Swap" visible="false" GridPane.columnIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
