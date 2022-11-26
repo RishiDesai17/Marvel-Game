@@ -34,7 +34,7 @@ public class BattleUIHolder {
 
     public void setHealth(double curHealth, double maxHealth){
         if(curHealth > 0) {
-            HpLabel.setText(String.format("%.0f", curHealth) + " / " + maxHealth);
+            HpLabel.setText(String.format("%.0f", curHealth) + " / " + String.format("%0.f", maxHealth));
             HpBar.setProgress(((double) curHealth) / maxHealth);
         }else{
             HpLabel.setText(0 + " / " + maxHealth);

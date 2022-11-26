@@ -49,4 +49,5 @@ public class AbilityFactory {
 	    public static Ability getShieldThrow(){
 	        return new Ability("ShieldThrow", Type.PHYSICAL, 20);
 	    }
+	    
 }

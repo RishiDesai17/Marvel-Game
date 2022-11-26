@@ -40,5 +40,12 @@ public class AnimationFactory {
 	 public static SequentialTransition getShieldBash(boolean isPlayer1, ImageView player1SideAnimationView, ImageView player2SideAnimationView){
 	        return  null;
 	    }
+	 public static SequentialTransition getAnimationFor(String abilityName, boolean isPlayer1, ImageView player1SideAnimationView, ImageView player2SideAnimationView) {
+	    	switch(abilityName) {
+	    		case "Hulk Smash": return getHulkSmash(isPlayer1, player1SideAnimationView, player2SideAnimationView);
+//	    		break;
+//	    		case: ""
+	    	}
+	    }
 	 
 }

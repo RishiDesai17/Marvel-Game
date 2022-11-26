@@ -139,7 +139,7 @@ public class GameController extends SceneController implements Initializable {
             	abilityBtn1.setText(stagedAvenger.getAbility(1).getName());
             	abilityBtn2.setText(stagedAvenger.getAbility(2).getName());
             	abilityBtn1.setOnAction(e -> {
-            		System.out.println("You lcicked me");
+            		System.out.println("You clicked me");
             		// attack animation here
             		player.enemySlot.takeHit(stagedAvenger.getAbility(1));
             		if(isOver()) {
