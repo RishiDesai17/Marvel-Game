@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.SequentialTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -140,36 +142,79 @@ public class GameController extends SceneController implements Initializable {
             	abilityBtn2.setText(stagedAvenger.getAbility(2).getName());
             	abilityBtn1.setOnAction(e -> {
             		System.out.println("You clicked me");
-            		// attack animation here
-            		player.enemySlot.takeHit(stagedAvenger.getAbility(1));
-            		if(isOver()) {
-            			System.out.println("Route to end game win screen for player, p1 or p2 captured in player var");
-            			try {
-							switchToEndGameScreen(e);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-            		}
-            		isP1Turn = !isP1Turn;
             		
-            		updateAbilityUI();
+            		// attack animation here
+            		SequentialTransition animation = AnimationFactory.getAnimationFor(stagedAvenger.getAbility(1).getName(), isP1Turn, player1ImageView, player1SideAnimationView, player2ImageView);
+            		animation.play();
+            		
+            		animation.setOnFinished(e1 -> {
+            			player.enemySlot.takeHit(stagedAvenger.getAbility(1));
+
+                		if(isOver()) {
+                			System.out.println("Route to end game win screen for player, p1 or p2 captured in player var");
+                			try {
+    							switchToEndGameScreen(e);
+    						} catch (IOException ex) {
+    							// TODO Auto-generated catch block
+    							ex.printStackTrace();
+    						}
+                		}
+                		
+//                		player1SideAnimationView.setX(-450);
+//                		System.out.println(player1SideAnimationView.getScaleX());
+//                		player1SideAnimationView.scaleXProperty().
+            			player1SideAnimationView.setScaleX(1);
+            			player1SideAnimationView.setScaleY(1);
+//            			System.out.println(player1SideAnimationView.getScaleX());
+                		player1SideAnimationView.setOpacity(1);
+                		
+                		Image imageObject = new Image(stagedAvenger.frontImage);
+	               		if (isP1Turn) {
+	               			player1ImageView.setImage(imageObject);
+	             		}
+	             		else {
+	             			player2ImageView.setImage(imageObject);
+	             		}
+                		
+               		 	isP1Turn = !isP1Turn;
+               		 	
+                		updateAbilityUI();
+            		});
             	});
             	
             	abilityBtn2.setOnAction(e -> {
-            		// attack animation here
-            		player.enemySlot.takeHit(stagedAvenger.getAbility(2));
-            		if(isOver()) {
-            			System.out.println("Route to end game win screen for player, p1 or p2 captured in player var");
-            			try {
-							switchToEndGameScreen(e);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-            		}
-            		isP1Turn = !isP1Turn;
-            		updateAbilityUI();
+            		SequentialTransition animation = AnimationFactory.getAnimationFor(stagedAvenger.getAbility(2).getName(), isP1Turn, player1ImageView, player1SideAnimationView, player2ImageView);
+            		animation.play();
+            		
+            		animation.setOnFinished(e1 -> {
+            			player.enemySlot.takeHit(stagedAvenger.getAbility(2));
+                		if(isOver()) {
+                			System.out.println("Route to end game win screen for player, p1 or p2 captured in player var");
+                			try {
+    							switchToEndGameScreen(e);
+    						} catch (IOException ex) {
+    							// TODO Auto-generated catch block
+    							ex.printStackTrace();
+    						}
+                		}
+                		
+                		player1SideAnimationView.setScaleX(1);
+            			player1SideAnimationView.setScaleY(1);
+                		player1SideAnimationView.setOpacity(1);
+                		
+                		Image imageObject = new Image(stagedAvenger.frontImage);
+                		
+                		if (isP1Turn) {
+                			player1ImageView.setImage(imageObject);
+                		}
+                		else {
+                			player2ImageView.setImage(imageObject);
+                		}
+               		 	
+                		isP1Turn = !isP1Turn;
+                		
+                		updateAbilityUI();
+            		});
             	});
         	}
 
@@ -218,12 +263,21 @@ public class GameController extends SceneController implements Initializable {
 	private void initializePlayersParty(List<Avenger> p1Party, List<Avenger> p2Party, Avenger[] avengerPool) {
 		HashSet<Integer> hs = new HashSet<>();
         int randomlySelectedIndex = -1;
+        int count = 0;
         while(hs.size() < 3) {
-        	randomlySelectedIndex = (int)(Math.random() * (avengerPool.length - 1));
+        	if (count == 0) {
+        		randomlySelectedIndex = 4;
+        	}
+        	else {
+        		randomlySelectedIndex = (int)(Math.random() * (avengerPool.length - 1));
+        	}
+        	
         	if(!hs.contains(randomlySelectedIndex)) {
         		p1Party.add(avengerPool[randomlySelectedIndex]);
         		hs.add(randomlySelectedIndex);
         	}
+        	
+        	count += 1;
         }
         for(int i = 0; i < avengerPool.length; i++) {
         	if(!hs.contains(i)) {
@@ -234,8 +288,8 @@ public class GameController extends SceneController implements Initializable {
 	
 	 private void setFxml(Player p1,Player p2){
 		 	
-		 	player1UI = new BattleUIHolder(player1AvengerLabel, player1HpBar, player1HpLabel,player1ImageView,true);
-	        player2UI = new BattleUIHolder(player2AvengerLabel, player2HpBar, player2HpLabel,player2ImageView,false);
+		 	player1UI = new BattleUIHolder(player1AvengerLabel, player1HpBar, player1HpLabel,player1ImageView);
+	        player2UI = new BattleUIHolder(player2AvengerLabel, player2HpBar, player2HpLabel,player2ImageView);
 	
 	        player1Slot = new BattleSlot(player1UI,player1SideAnimationView);
 	        player2Slot = new BattleSlot(player2UI,player2SideAnimationView);

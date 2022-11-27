@@ -12,13 +12,12 @@ public class BattleUIHolder {
     private ProgressBar HpBar;
     private Label HpLabel;
     private ImageView imageView;
-    private boolean shoudUseFrontImage;
-    public BattleUIHolder(Label nameLabel, ProgressBar hpBar, Label hpLabel, ImageView imageView,boolean shoudUseFrontImage) {
+    
+    public BattleUIHolder(Label nameLabel, ProgressBar hpBar, Label hpLabel, ImageView imageView) {
         NameLabel = nameLabel;
         HpBar = hpBar;
         HpLabel = hpLabel;
         this.imageView = imageView;
-        this.shoudUseFrontImage = shoudUseFrontImage;
     }
     
     public void load(Avenger avenger){
@@ -27,14 +26,14 @@ public class BattleUIHolder {
         HpBar.setProgress(avenger.getHealthRatio());
         HpLabel.setText(String.format("%.0f",avenger.getCurrentHealth()) + " / " + String.format("%.0f",AvengerInterface.MAX_HEALTH));
         System.out.println ( " ANswer : " + "file:" + avenger.frontImage);
-        imageView.setImage( new Image(shoudUseFrontImage?getClass().getResourceAsStream(avenger.frontImage):  getClass().getResourceAsStream(avenger.backImage)));
+        imageView.setImage(new Image(avenger.frontImage));
         NameLabel.setText(avenger.name);
         
     }
 
     public void setHealth(double curHealth, double maxHealth){
         if(curHealth > 0) {
-            HpLabel.setText(String.format("%.0f", curHealth) + " / " + String.format("%0.f", maxHealth));
+            HpLabel.setText(String.format("%.0f", curHealth) + " / " + String.format("%.0f", maxHealth));
             HpBar.setProgress(((double) curHealth) / maxHealth);
         }else{
             HpLabel.setText(0 + " / " + maxHealth);

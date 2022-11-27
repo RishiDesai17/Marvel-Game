@@ -73,20 +73,18 @@
       </GridPane>
       <AnchorPane layoutX="61.0" layoutY="177.0" prefHeight="287.0" prefWidth="217.0">
          <children>
-            <ImageView fx:id="player1ImageView" fitHeight="259.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="player1ImageView" fitHeight="292.0" fitWidth="218.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/spidey.png" />
+                  <Image url="@images/spidey-standing.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="player1SideAnimationView" fitHeight="277.0" fitWidth="219.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="682.0" layoutY="177.0" prefHeight="200.0" prefWidth="247.0">
          <children>
-            <ImageView fx:id="player2SideAnimationView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="player2ImageView" fitHeight="241.0" fitWidth="288.0" layoutX="-31.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="player2ImageView" fitHeight="292.0" fitWidth="218.0" layoutX="45.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
                <image>
-                  <Image url="@images/black-widow_p2.png" />
+                  <Image url="@images/black-widow.png" />
                </image>
             </ImageView>
          </children>
@@ -166,5 +164,10 @@
          </children>
       </StackPane>
       <TextFlow layoutX="371.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fx:id="player1SideAnimationView" fitHeight="1.0" fitWidth="1.0" layoutX="455.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/spider%20web.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -10,14 +10,14 @@ public class Avenger implements AvengerInterface{
 	Type movementMode;
 	ArrayList<Ability> abilityList;
 	public final String frontImage;
-    public final String backImage;
+    public final String actionImage;
     
-	public Avenger(String name, Type movementMode, ArrayList<Ability> abilityList, String frontImage, String backImage) {
+	public Avenger(String name, Type movementMode, ArrayList<Ability> abilityList, String frontImage, String actionImage) {
 		this.name = name;
 		this.movementMode = movementMode;
 		this.abilityList = abilityList;
 		this.frontImage = frontImage;
-		this.backImage = backImage;
+		this.actionImage = actionImage;
 	}
 	
 	public double getCurrentHealth() {
