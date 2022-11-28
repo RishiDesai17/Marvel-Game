@@ -40,9 +40,157 @@ public class Avenger implements AvengerInterface{
 		return abilityList;
 	}
 	
-	public void takeHit(Ability ability) {
-		currentHealth -= ability.getBaseDamage();
-		
+	public double[] takeHit(Ability ability) {
+		double[] damageTaken = calculateEffectiveDamage(ability);
+		currentHealth -= (damageTaken[0] + damageTaken[1]);
+		return damageTaken;
+	}
+	
+	public double[] getHitDamage(Ability ability) {
+		double[] damageTaken = calculateEffectiveDamage(ability);
+		return damageTaken;
+	}
+	
+	private double[] calculateEffectiveDamage(Ability ability) {
+		switch(ability.getName()) {
+			/* Spiderman */
+			// Ability : web
+			case "Spider Web":
+				//strong against
+				if(name.equals("IronMan")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				//weak against
+				if(name.equals("Hulk") || name.equals("Thor")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			// Ability : Leaping Kick
+			case "Leaping Kick":
+				// strong against
+				if(name.equals("Black Widow")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Hulk") || name.equals("Captain America")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			/* Hulk */
+			// Ability : Hulk Smash
+			case "Hulk Smash":
+				// strong against
+				if(name.equals("Captain America")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Spiderman") || name.equals("Black Widow")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			// Ability : Rage
+			case "Rage":
+				// no damage interaction; return
+				return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+			
+			/* Black Widow */
+			// Ability : Widows Bite
+			case "Widows Bite":
+				// strong against
+				if(name.equals("Thor")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// no weak against
+				break;
+			
+			// Ability : Stun Baton
+			case "Stun Baton":
+				// strong against
+				if(name.equals("Spiderman")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Hulk") || name.equals("Thor") || name.equals("Ironman")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			/* Thor */
+			// Ability : Thunder Storm
+			case "Thunder Storm":
+				// strong against
+				if(name.equals("Ironman") || name.equals("Hulk")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Captain America")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			// Ability : Hammer Throw
+			case "Hammer Throw":
+				// strong against
+				if(name.equals("Black Widow")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Spiderman") || name.equals("Black Widow")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			/* Ironman */
+			// Ability : Light Blast
+			case "Light Blast":
+				// strong against
+				if(name.equals("Captain America") || name.equals("Hulk")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// no weak against
+				break;
+			
+			// Ability : Artilery Barrage
+			case "Artilery Barrage":
+				// strong against
+				if(name.equals("Spiderman")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Captain America") || name.equals("Hulk")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			/* Captain America */
+			// Ability : ShieldBash
+			case "ShieldBash":
+				// strong against
+				if(name.equals("Spiderman")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Hulk")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+			
+			// Ability : Shield Throw
+			case "ShieldThrow":
+				// strong against
+				if(name.equals("Thor")) {
+					return new double[] {ability.getBaseDamage(),ability.getBaseDamage()*0.5};
+				}
+				// weak against
+				if(name.equals("Spiderman") || name.equals("Black Widow")) {
+					return new double[] {ability.getBaseDamage(),-ability.getBaseDamage()*0.5};
+				}
+				break;
+		}
+		return new double[] {ability.getBaseDamage(), 0};
 	}
 	
 	public boolean isDead(){

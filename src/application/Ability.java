@@ -16,5 +16,5 @@ public class Ability {
 	String getName() {return name;}
 	Type getType() {return type;}
 	double getBaseDamage() {return baseDamage;}
-	
+	void setBaseDamage(double damage) {baseDamage = damage;}
 }

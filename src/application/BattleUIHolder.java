@@ -25,7 +25,6 @@ public class BattleUIHolder {
             System.out.println("avenger null");
         HpBar.setProgress(avenger.getHealthRatio());
         HpLabel.setText(String.format("%.0f",avenger.getCurrentHealth()) + " / " + String.format("%.0f",AvengerInterface.MAX_HEALTH));
-        System.out.println ( " ANswer : " + "file:" + avenger.frontImage);
         imageView.setImage(new Image(avenger.frontImage));
         NameLabel.setText(avenger.name);
         

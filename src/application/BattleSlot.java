@@ -36,9 +36,15 @@ public class BattleSlot{
         return avenger == null;
     }
 
-    public void takeHit(Ability ability){
-        avenger.takeHit(ability);
+    public double[] takeHit(Ability ability){
+        double[] damageTaken = avenger.takeHit(ability);
         slotUI.setHealth(avenger.getCurrentHealth(),AvengerInterface.MAX_HEALTH);
+        return damageTaken;
+    }
+    
+    public double[] getHitDamage(Ability ability) {
+    	double[] damageTaken = avenger.getHitDamage(ability);
+    	return damageTaken;
     }
 
     public BattleSlot(Avenger avenger) {
