@@ -1,5 +1,8 @@
 package application;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,10 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class HomeController extends SceneController implements Initializable {
+	
+	private MediaPlayer mediaPlayer;
 	
 	@FXML
 	private ImageView spiderman;
@@ -36,6 +43,31 @@ public class HomeController extends SceneController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		// Setup home screen music
+		Media media = null;
+		try {
+			media = new Media(new File("src/application/media/avengers-theme-song-download.mp3").toURI().toURL().toString());
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+		mediaPlayer = new MediaPlayer(media);
+		mediaPlayer.setOnEndOfMedia(new Runnable() {
+		       public void run() {
+		         mediaPlayer.seek(Duration.ZERO);
+		       }
+		   });
+		mediaPlayer.play();
+		
+		// on click of start game btn, stop home screen music
+		startGameButton.setOnAction(e -> {
+			mediaPlayer.stop();
+			try {
+				switchToGameScreen(e);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 		
 		spiderWeb.setDisable(true); // prevent web from obscuring start btn
 		ironManLight.setDisable(true); // prevent light circle from obscuring start btn

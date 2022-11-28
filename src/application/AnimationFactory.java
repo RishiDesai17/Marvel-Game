@@ -7,6 +7,8 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
 // need to return sequential transition end product back to gameController
@@ -31,7 +33,7 @@ public class AnimationFactory {
 		
 		FadeTransition fade = new FadeTransition();
 		fade.setNode(player1SideAnimationView);
-		fade.setDuration(Duration.millis(1000));
+		fade.setDuration(Duration.millis(1500));
 		fade.setFromValue(1);
 		fade.setToValue(0.5);
 		 
@@ -58,7 +60,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -76,6 +78,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/hulk-smash.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -85,7 +92,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -103,6 +110,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/hulk-rage.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -112,7 +124,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -130,19 +142,25 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/widows-bite.png");
 		player1SideAnimationView.setImage(superpowerObject);
-		
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
 		scale.setDuration(Duration.millis(800));
 		scale.setByX(200);
 		scale.setByY(200);
-	 	
+		
+		
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
-	
+	 	
+	 	
 		return new SequentialTransition(scale, fadeOut);
 	 }
 	 
@@ -157,6 +175,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/stun-baton.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -166,7 +189,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -184,6 +207,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/thor-hammer.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -193,7 +221,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -211,6 +239,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/thor-thunderstorm.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -220,7 +253,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -248,7 +281,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(0.7);
 	 	fadeOut.setToValue(0);
 	
@@ -265,6 +298,11 @@ public class AnimationFactory {
 		 
 		Image superpowerObject = new Image("application/images/artilery-barrage.png");
 		player1SideAnimationView.setImage(superpowerObject);
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
 		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
@@ -274,7 +312,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -302,7 +340,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -321,6 +359,12 @@ public class AnimationFactory {
 		Image superpowerObject = new Image("application/images/flying-shield.png");
 		player1SideAnimationView.setImage(superpowerObject);
 		
+		if(!isPlayer1) {
+			Rotate flipRotation = new Rotate(180,Rotate.Y_AXIS);
+			player1SideAnimationView.getTransforms().add(flipRotation);
+			player1SideAnimationView.setTranslateX(200);
+		}
+		
 		ScaleTransition scale = new ScaleTransition();
 		scale.setNode(player1SideAnimationView);
 		scale.setDuration(Duration.millis(800));
@@ -329,7 +373,7 @@ public class AnimationFactory {
 	 	
 	 	FadeTransition fadeOut = new FadeTransition();
 	 	fadeOut.setNode(player1SideAnimationView);
-	 	fadeOut.setDuration(Duration.millis(1000));
+	 	fadeOut.setDuration(Duration.millis(1500));
 	 	fadeOut.setFromValue(1);
 	 	fadeOut.setToValue(0);
 	
@@ -337,7 +381,6 @@ public class AnimationFactory {
 	 }
 	 
 	 public static SequentialTransition getAnimationFor(String abilityName, boolean isPlayer1, ImageView player1View, ImageView player1SideAnimationView, ImageView player2View) {
-		 System.out.println(abilityName);
 	    	switch(abilityName) {
 	    		case "Spider Web":
 	    			return getSpiderWeb(isPlayer1, player1View, player1SideAnimationView, player2View);

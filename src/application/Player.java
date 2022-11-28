@@ -11,7 +11,6 @@ public class Player {
 	protected  BattleSlot ownedSlot;
     protected BattleSlot enemySlot;
     private boolean canCancelSwap = true;
-//    private GameController.SwapUI swapUI = new GameController.SwapUI();
     
 	 protected Player(String _name,List<Avenger> avengers) {
 	        name = _name;
@@ -76,12 +75,12 @@ public class Player {
 	        if(avengerToSwapWith == null)
 	            System.out.println("swap failed");
 	        else{
-	            stagedAvenger = avengerToSwapWith;//no need to add the previous staged pokemon to party again
+	            stagedAvenger = avengerToSwapWith;
 	            ownedSlot.setAvenger(stagedAvenger);
 	        }
 	    }
 
-	    public Avenger sendOutFirstAvailableAvenger(){//get first not dead pokemon that's not already sent out or return null,
+	    public Avenger sendOutFirstAvailableAvenger(){
 	        for (Avenger a :party) {
 	            if(!a.isDead() && stagedAvenger != a) {
 	                return a;
@@ -90,7 +89,7 @@ public class Player {
 	        return  null;
 	    }
 
-	    public Avenger stageFirstAvailableAvenger(){// used for getting pokemon to send out first in battle//also stages the mon
+	    public Avenger stageFirstAvailableAvenger(){
 	        Avenger a = sendOutFirstAvailableAvenger();
 	        stagedAvenger = a;
 	        System.out.println(name+"sending avenger "+ a.name);

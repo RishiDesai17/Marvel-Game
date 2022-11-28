@@ -103,12 +103,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="abilityBtn1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="279.0" text="Ability 1">
+                        <Button fx:id="abilityBtn1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="54.0" prefWidth="279.0" style="-fx-font-weight: 700; -fx-background-radius: 30;" text="Ability 1">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="abilityBtn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="57.0" prefWidth="281.0" text="Ability 2" GridPane.columnIndex="1" />
+                        <Button fx:id="abilityBtn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="57.0" prefWidth="281.0" style="-fx-background-radius: 30; -fx-font-weight: 700; -fx-font-size: 20;" text="Ability 2" GridPane.columnIndex="1" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
@@ -127,8 +127,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="swapBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="174.0" text="Swap" />
-                        <Button fx:id="cancelSwapBtn" disable="true" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" text="Cancel Swap" visible="false" GridPane.columnIndex="1" />
+                        <Button fx:id="swapBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="174.0" style="-fx-background-radius: 30; -fx-font-weight: 700; -fx-font-size: 20;" text="Swap" />
+                        <Button fx:id="cancelSwapBtn" disable="true" mnemonicParsing="false" prefHeight="65.0" prefWidth="173.0" style="-fx-background-radius: 20; -fx-font-weight: 700;" text="Cancel Swap" visible="false" GridPane.columnIndex="1" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -141,29 +141,36 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <Button fx:id="Avenger1Btn" mnemonicParsing="false" prefHeight="65.0" prefWidth="269.0" text="Avenger 1" />
-                  <Button fx:id="Avenger2Btn" mnemonicParsing="false" prefHeight="61.0" prefWidth="257.0" text="Avenger 2" />
+                  <Button fx:id="Avenger1Btn" mnemonicParsing="false" prefHeight="65.0" prefWidth="269.0" style="-fx-background-radius: 20; -fx-font-weight: 700;" text="Avenger 1" />
+                  <Button fx:id="Avenger2Btn" mnemonicParsing="false" prefHeight="61.0" prefWidth="257.0" style="-fx-background-radius: 20; -fx-font-weight: 700;" text="Avenger 2" />
                </children>
             </FlowPane>
-            <Pane fx:id="dialogBox" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F5EFD7; -fx-background-radius: 16; -fx-border-radius: 8; -fx-border-color: #ed6534; -fx-border-width: 8;" visible="false">
+            <Pane fx:id="dialogBox" prefHeight="150.0" prefWidth="611.0" style="-fx-background-color: F5EFD7; -fx-background-radius: 16; -fx-border-radius: 8; -fx-border-color: #ed6534; -fx-border-width: 8;" visible="false">
                <children>
                   <TextFlow prefHeight="200.0" prefWidth="950.0">
                      <children>
-                        <Text fx:id="dialogText" layoutX="20.0" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Blastoise used surf Blastoise used surf Blastoise used surf Blastoise used surf" wrappingWidth="88.90756225585938">
+                        <Text fx:id="dialogText" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Blastoise used surf Blastoise used surf Blastoise used surf Blastoise used surf" wrappingWidth="88.90756225585938">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Text>
                      </children>
                      <padding>
-                        <Insets left="20.0" top="60.0" />
+                        <Insets left="20.0" top="10.0" />
                      </padding>
                   </TextFlow>
                </children>
             </Pane>
          </children>
       </StackPane>
-      <TextFlow layoutX="371.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextFlow fx:id="playerTurnTextFlow" layoutX="370.0" layoutY="58.0" prefHeight="54.0" prefWidth="199.0" style="-fx-background-color: white; -fx-opacity: 0.5;">
+         <children>
+            <Text fx:id="playerTurnText" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Impact;" text="Player 1's Turn" wrappingWidth="194.4271240234375">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
+         </children></TextFlow>
       <ImageView fx:id="player1SideAnimationView" fitHeight="1.0" fitWidth="1.0" layoutX="455.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/spider%20web.png" />
